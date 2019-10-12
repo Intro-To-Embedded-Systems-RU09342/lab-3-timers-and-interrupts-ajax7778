@@ -7,6 +7,9 @@ __interrupt void Port_1(void)
 }
 While you still need to initialize the Ports to be interrupt enabled and clear the flags, this "Pragma Vector" tells the compiler that when a particular interrupt occurs, run this code.
 
-# MSP430FR6989
+## MSP430FR6989
 For this board, the button interrupt was gathered from an existing sample code. There are multiple important protocols when it comes to 
-creating an interrupt that are shown in this code. 
+creating an interrupt that are shown in this code. The interrupt allows for an LED to blink when a button is pressed. This triggers an interrupt, which allows for the code above to be executed. This is the interrupt code. The board then enters into low power mode 4. 
+
+## MSP430G2553
+This board works with interrupts very similarly to the 6989, but the LED and switch ports are different. But in both cases, the board initializes the output pins, clears the interrupt flags, enables the interrupt on the LED, then executes the interrupt service routine (ISR). This board also enters low power mode 4 upon execution of the ISR.
